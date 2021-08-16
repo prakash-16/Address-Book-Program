@@ -22,7 +22,8 @@ class contacts {
 		int i;
 		if (contactList[0][0] == null) {
 			System.out.println("The contact list is empty");
-		} else {
+		} 
+		else {
 			for (i = 0; i < contactList.length; i++) {
 				if (contactList[i][0] != null) {
 					System.out.println((i + 1) + "\nFirst name - " + contactList[i][0] + "\nLast name - "
@@ -33,6 +34,23 @@ class contacts {
 			}
 		}
 	}
+	public void edit(String name, int indexNum, String dataToBeChanged) {
+		int i;
+		if (contactList[0][0] == null) {
+			System.out.println("The contact list is empty");
+		}
+		for(i=0;i<contactList.length;i++) {
+			if (contactList[i][0] != null) {
+				if(contactList[i][0] == name ) {
+					contactList[i][indexNum] = dataToBeChanged;
+				}
+				else {
+					System.out.println("Name is not in the list");
+				}
+			}
+		}
+		
+	}
 }
 
 public class addressBookSystem {
@@ -42,6 +60,8 @@ public class addressBookSystem {
 		contacts obj1 = new contacts();
 		obj1.contactDetails("AB", "CD", "XYZ California", "California", "Texas", "100101", "5151651651",
 				"abcd@gmail.com");
+		obj1.showDetails();
+		obj1.edit("AB",1,"changed");
 		obj1.showDetails();
 
 	}
