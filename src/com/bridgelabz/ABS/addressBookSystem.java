@@ -1,8 +1,9 @@
 package com.bridgelabz.ABS;
 
-class contacts{
+class contacts {
 	public static int j = 0;
 	public static String contactList[][] = new String[10][10];
+
 	public void contactDetails(String firstName, String lastName, String address, String city, String state, String zip,
 			String contactNumb, String email) {
 		contactList[j][0] = firstName;
@@ -36,12 +37,13 @@ class contacts{
 
 public class addressBookSystem {
 
-
 	public static void main(String[] args) {
 		System.out.println(" Welcome to Address Book Program ");
-		
+		contacts obj1 = new contacts();
+		obj1.contactDetails("AB", "CD", "XYZ California", "California", "Texas", "100101", "5151651651",
+				"abcd@gmail.com");
+		obj1.showDetails();
+
 	}
 
 }
-
-
