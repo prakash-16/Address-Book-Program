@@ -1,5 +1,5 @@
 package com.bridgelabz.ABS;
-
+import java.util.Arrays;
 class contacts {
 	public static int j = 0;
 	public static String contactList[][] = new String[10][10];
@@ -51,6 +51,29 @@ class contacts {
 		}
 		
 	}
+	public void delete(String name) {
+		int i;
+		if (contactList[0][0] == null) {
+			System.out.println("The contact list is empty");
+		}
+		for(i=0;i<contactList.length;i++) {
+			if (contactList[i][0] != null) {
+				if(contactList[i][0] == name ) {
+					if(contactList[i+1][0] != null) {
+						contactList[i][0] = contactList[i+1][0];
+						contactList[i+1][0] =null;
+					}
+					else {
+						contactList[i][0] =null;
+					}
+				}
+				else {
+					System.out.println("Name is not in the list");
+				}
+			}
+		}
+		
+	}
 }
 
 public class addressBookSystem {
@@ -58,10 +81,15 @@ public class addressBookSystem {
 	public static void main(String[] args) {
 		System.out.println(" Welcome to Address Book Program ");
 		contacts obj1 = new contacts();
-		obj1.contactDetails("AB", "CD", "XYZ California", "California", "Texas", "100101", "5151651651",
-				"abcd@gmail.com");
+		obj1.contactDetails("Amit", "Singh", "Street 1", "California", "Texas", "100101", "6152551651",
+				"amits@gmail.com");
 		obj1.showDetails();
-		obj1.edit("AB",1,"changed");
+		obj1.edit("Amit",2,"Street 2");
+		obj1.showDetails();
+		obj1.contactDetails("Sachin", "Patel", "Street 3", "California", "Texas", "100101", "5151651651",
+				"sachinp@gmail.com");
+		obj1.showDetails();
+		obj1.delete("Amit");
 		obj1.showDetails();
 
 	}
