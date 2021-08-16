@@ -83,13 +83,8 @@ public class addressBookSystem {
 		contacts obj1 = new contacts();
 		obj1.contactDetails("Amit", "Singh", "Street 1", "California", "Texas", "100101", "6152551651",
 				"amits@gmail.com");
-		obj1.showDetails();
-		obj1.edit("Amit",2,"Street 2");
-		obj1.showDetails();
 		obj1.contactDetails("Sachin", "Patel", "Street 3", "California", "Texas", "100101", "5151651651",
 				"sachinp@gmail.com");
-		obj1.showDetails();
-		obj1.delete("Amit");
 		obj1.showDetails();
 
 	}
