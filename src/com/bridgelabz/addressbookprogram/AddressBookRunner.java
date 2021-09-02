@@ -40,6 +40,7 @@ public class AddressBookRunner {
 			}
 		}	
 		addressBookOne.showDetails();
+		addressBookOne.searchName("Mumbai", "Maharashtra");
 	}
 
 }

@@ -38,5 +38,15 @@ public class AddressBook {
 			}
 		}
 	}
+	
+	public void searchName(String city, String state) {
+		for(i = 0; i < addressBook.size(); i++) {
+			if(addressBook.get(i)[3].equals(city) || addressBook.get(i)[4].equals(state)) {
+				System.out.println("List of people live in " + city + state);
+				System.out.println(addressBook.get(i)[0] + addressBook.get(i)[1]);
+			}
+		}
+		
+	}
 
 }
