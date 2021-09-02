@@ -6,7 +6,7 @@ public class AddressBookRunner {
 
 	public static void main(String[] args) {
 		System.out.println(" Welcome to Address Book Program ");
-		AddressBookProgram addressBookOne = new AddressBookProgram();
+		AddressBook addressBookOne = new AddressBook();
 		Scanner sc = new Scanner(System.in);
 		while(true) {
 			System.out.println("Enter your first name :- ");
@@ -25,14 +25,8 @@ public class AddressBookRunner {
 			String contactNumber = sc.nextLine();
 			System.out.println("Enter your email :- ");
 			String email = sc.nextLine();
-			boolean result = addressBookOne.addContactDetails(firstName, lastName, address, city, state, zip, contactNumber,
+			addressBookOne.contactDetails(firstName, lastName, address, city, state, zip, contactNumber,
 					email);
-			if(result == true) {
-				System.out.println("Contact added successfully");
-			}
-			else {
-				System.out.println("Please enter valid input");
-			}
 			System.out.println("Do you wish to add more contacts (Yes/No)");
 			String choice = sc.nextLine();
 			if(choice.toLowerCase().equals("no")) {
