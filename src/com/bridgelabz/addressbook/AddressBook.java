@@ -13,12 +13,12 @@ public class AddressBook {
 	public boolean addContactDetails(String firstName, String lastName, String address, String city, String state,
 			String zip, String contactNumber, String email) {
 		String personDetails[] = new String[8];
-		String name = firstName + " " +lastName;
-		boolean result = checkDuplicateEntry(name);
-		if(result == true) {
+		String name = firstName + " " + lastName;
+		/*boolean result = checkDuplicateEntry(name);
+		if (result == true) {
 			System.out.println("There is an already entry for " + name);
 			return false;
-		}
+		}*/
 		personDetails[0] = firstName;
 		personDetails[1] = lastName;
 		personDetails[2] = address;
@@ -30,15 +30,16 @@ public class AddressBook {
 		addressBook.add(personDetails);
 		return true;
 	}
-	
+
 	public boolean checkDuplicateEntry(String name) {
 		ArrayList<String> userDetails = new ArrayList<String>();
 		for (i = 0; i < addressBook.size(); i++) {
-			for(j = 0; i < 8; j++) {
+			for (j = 0; i < 8; j++) {
 				userDetails.add(addressBook.get(i)[0] + " " + addressBook.get(i)[1]);
 			}
-			if(userDetails.stream().anyMatch(n -> n != null && n.equals(name))) return true;
-			
+			if (userDetails.stream().anyMatch(n -> n != null && n.equals(name)))
+				return true;
+
 		}
 		return false;
 	}
@@ -53,11 +54,14 @@ public class AddressBook {
 	}
 
 	public void searchName(String city, String state) {
+		String details = city + " ," + state;
+		ArrayList<String> userDetails = new ArrayList<String>();
 		for (i = 0; i < addressBook.size(); i++) {
-			if (addressBook.get(i)[3].equals(city) || addressBook.get(i)[4].equals(state)) {
-				System.out.println("List of people live in " + city + state);
-				System.out.println(addressBook.get(i)[0] + addressBook.get(i)[1]);
+			for (j = 0; i < 8; j++) {
+				userDetails.add(addressBook.get(i)[3] + " ," + addressBook.get(i)[4]);
 			}
+			if (userDetails.stream().anyMatch(n -> n != null && n.equals(details)))
+				System.out.println(addressBook.get(i)[0] + addressBook.get(i)[1]);
 		}
 	}
 
@@ -82,9 +86,9 @@ public class AddressBook {
 	}
 
 	public int countPersons() {
-		int count = 0; 
+		int count = 0;
 		Enumeration<String> key = cityPersons.keys();
-		while(key.hasMoreElements()) {
+		while (key.hasMoreElements()) {
 			String keys = key.nextElement();
 			count++;
 			return count;

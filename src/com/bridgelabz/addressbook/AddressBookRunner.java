@@ -39,8 +39,9 @@ public class AddressBookRunner {
 				break;
 			}
 		}
-		/*addressBookOne.showDetails();
-		addressBookOne.dictOfStateAndPersons();
+		addressBookOne.showDetails();
+		addressBookOne.searchName("Mumbai", "UP");
+		/*addressBookOne.dictOfStateAndPersons();
 		addressBookOne.dictOfCityAndPersons();
 		addressBookOne.printDictCityAndPersons();
 		addressBookOne.printDictStateAndPersons();
