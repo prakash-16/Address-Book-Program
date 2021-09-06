@@ -39,13 +39,13 @@ public class AddressBookRunner {
 				break;
 			}
 		}
-		addressBookOne.showDetails();
+		/*addressBookOne.showDetails();
 		addressBookOne.dictOfStateAndPersons();
 		addressBookOne.dictOfCityAndPersons();
 		addressBookOne.printDictCityAndPersons();
 		addressBookOne.printDictStateAndPersons();
 		int result = addressBookOne.countPersons();
-		System.out.println("The total number of people is " + result);
+		System.out.println("The total number of people is " + result);*/
 	}
 
 }

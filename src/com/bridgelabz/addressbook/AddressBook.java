@@ -13,11 +13,11 @@ public class AddressBook {
 	public boolean addContactDetails(String firstName, String lastName, String address, String city, String state,
 			String zip, String contactNumber, String email) {
 		String personDetails[] = new String[8];
-		for (i = 0; i < addressBook.size(); i++) {
-			if (addressBook.get(i)[0].equals(firstName) && addressBook.get(i)[1].equals(lastName)) {
-				System.out.println("Duplicate Entry");
-				return false;
-			}
+		String name = firstName + " " +lastName;
+		boolean result = checkDuplicateEntry(name);
+		if(result == true) {
+			System.out.println("There is an already entry for " + name);
+			return false;
 		}
 		personDetails[0] = firstName;
 		personDetails[1] = lastName;
@@ -29,6 +29,18 @@ public class AddressBook {
 		personDetails[7] = email;
 		addressBook.add(personDetails);
 		return true;
+	}
+	
+	public boolean checkDuplicateEntry(String name) {
+		ArrayList<String> userDetails = new ArrayList<String>();
+		for (i = 0; i < addressBook.size(); i++) {
+			for(j = 0; i < 8; j++) {
+				userDetails.add(addressBook.get(i)[0] + " " + addressBook.get(i)[1]);
+			}
+			if(userDetails.stream().anyMatch(n -> n != null && n.equals(name))) return true;
+			
+		}
+		return false;
 	}
 
 	public void showDetails() {
