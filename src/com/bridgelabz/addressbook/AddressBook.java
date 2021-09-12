@@ -13,9 +13,9 @@ public class AddressBook {
 	public boolean addContactDetails(String firstName, String lastName, String address, String city, String state,
 			String zip, String contactNumber, String email) {
 		String personDetails[] = new String[8];
-		String name = firstName + " " +lastName;
+		String name = firstName + " " + lastName;
 		boolean result = checkDuplicateEntry(name);
-		if(result == true) {
+		if (result == true) {
 			System.out.println("There is an already entry for " + name);
 			return false;
 		}
@@ -30,15 +30,16 @@ public class AddressBook {
 		addressBook.add(personDetails);
 		return true;
 	}
-	
+
 	public boolean checkDuplicateEntry(String name) {
 		ArrayList<String> userDetails = new ArrayList<String>();
 		for (i = 0; i < addressBook.size(); i++) {
-			for(j = 0; i < 8; j++) {
+			for (j = 0; i < 8; j++) {
 				userDetails.add(addressBook.get(i)[0] + " " + addressBook.get(i)[1]);
 			}
-			if(userDetails.stream().anyMatch(n -> n != null && n.equals(name))) return true;
-			
+			if (userDetails.stream().anyMatch(n -> n != null && n.equals(name)))
+				return true;
+
 		}
 		return false;
 	}
@@ -82,15 +83,26 @@ public class AddressBook {
 	}
 
 	public int countPersons() {
-		int count = 0; 
+		int count = 0;
 		Enumeration<String> key = cityPersons.keys();
-		while(key.hasMoreElements()) {
+		while (key.hasMoreElements()) {
 			String keys = key.nextElement();
 			count++;
 			return count;
 		}
 		System.out.println("List is empty.");
 		return 0;
+	}
+
+	public StringBuffer writeDataToCSV(String addressBook) {
+		String[][] arr = new String[10][10];
+		for(i=0;i<addressBook.size();i++) {
+			for(j=0;j<8;j++) {
+				arr[i][j] = addressBook.get(i)[j];
+			}
+		}
+		return arr
+		
 	}
 
 }

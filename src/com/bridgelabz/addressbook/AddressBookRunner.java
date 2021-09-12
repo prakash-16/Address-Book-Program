@@ -1,10 +1,38 @@
 package com.bridgelabz.addressbook;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.*;
 
 public class AddressBookRunner {
 	
-	public static void main(String[] args) {
+	public static void readDataCSV() throws IOException {
+		try {
+			Files.lines(new File("data.csv").toPath()).forEach(System.out::println);
+		}
+		catch(FileNotFoundException x) {
+			x.printStackTrace();
+		}
+	}
+	
+	public static void writeDataToCSV() throws IOException{
+		try {
+			ArrayList<String[]> data = new ArrayList<String[]>();
+			data.add(new String[] {"Index no", "First Name", "Last Name", "Address", "City", "State", "Zip Code", "Contact Number","Email-Id"});
+			Enumeration<String> en = dict.keys();
+			while(en.hasMoreElements()) {
+				String x =en.nextElement();
+				AddressBook temp = dict.get(x);
+			}
+		}
+		catch(IOException x) {
+			x.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) throws IOException {
 		
 		System.out.println(" Welcome to Address Book Program ");
 		AddressBook addressBookOne = new AddressBook();
@@ -39,13 +67,14 @@ public class AddressBookRunner {
 				break;
 			}
 		}
-		/*addressBookOne.showDetails();
+		addressBookOne.showDetails();
 		addressBookOne.dictOfStateAndPersons();
 		addressBookOne.dictOfCityAndPersons();
 		addressBookOne.printDictCityAndPersons();
 		addressBookOne.printDictStateAndPersons();
 		int result = addressBookOne.countPersons();
-		System.out.println("The total number of people is " + result);*/
+		System.out.println("The total number of people is " + result);
+		AddressBookRunner.readDataCSV();
 	}
 
 }
