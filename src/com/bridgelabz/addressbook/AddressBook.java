@@ -14,11 +14,11 @@ public class AddressBook {
 			String zip, String contactNumber, String email) {
 		String personDetails[] = new String[8];
 		String name = firstName + " " + lastName;
-		/*boolean result = checkDuplicateEntry(name);
+		boolean result = checkDuplicateEntry(name);
 		if (result == true) {
 			System.out.println("There is an already entry for " + name);
 			return false;
-		}*/
+		}
 		personDetails[0] = firstName;
 		personDetails[1] = lastName;
 		personDetails[2] = address;
@@ -96,5 +96,23 @@ public class AddressBook {
 		System.out.println("List is empty.");
 		return 0;
 	}
+	
+	public StringBuffer writeData(String bookName) {
+		StringBuffer file = new StringBuffer("AddressBook" + bookName + "\n");
+		for (i = 0; i < addressBook.size(); i++) {
+			System.out.println("Index no. - " + (i + 1));
+			file.append("\nFirst Name - "+addressBook.get(i)[0]);
+			file.append("\nLast Name - "+addressBook.get(i)[1]);
+			file.append("\nAddress - "+addressBook.get(i)[2]);
+			file.append("\nCity - "+addressBook.get(i)[3]);
+			file.append("\nState - "+addressBook.get(i)[4]);
+			file.append("\nZip Code - "+addressBook.get(i)[5]);
+			file.append("\nContact Number - "+addressBook.get(i)[6]);
+			file.append("\nEmail-Id - "+addressBook.get(i)[7]);
+			file.append("\n------------\n");
+	    }
+		return file;
+	}
+		
 
 }

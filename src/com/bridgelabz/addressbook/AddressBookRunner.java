@@ -1,8 +1,24 @@
 package com.bridgelabz.addressbook;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class AddressBookRunner {
+	
+	public static void readData() throws IOException {
+		Path filePath = Paths.get("C:\\Users\\pgoud\\addressBookData");
+		File file = new File(filePath.toString());
+		BufferedReader br = new BufferedReader(new FileReader(file.toString()));
+		String str;
+		while((str = br.readLine()) != null){
+			System.out.println(str);
+		}
+	}
 	
 	public static void main(String[] args) {
 		
@@ -41,12 +57,13 @@ public class AddressBookRunner {
 		}
 		addressBookOne.showDetails();
 		addressBookOne.searchName("Mumbai", "UP");
-		/*addressBookOne.dictOfStateAndPersons();
+		addressBookOne.dictOfStateAndPersons();
 		addressBookOne.dictOfCityAndPersons();
 		addressBookOne.printDictCityAndPersons();
 		addressBookOne.printDictStateAndPersons();
 		int result = addressBookOne.countPersons();
-		System.out.println("The total number of people is " + result);*/
+		System.out.println("The total number of people is " + result);
+		
 	}
 
 }
