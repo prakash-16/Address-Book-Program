@@ -96,5 +96,16 @@ public class AddressBook {
 		System.out.println("List is empty.");
 		return 0;
 	}
+	
+	public String[][] writeaDataTOCSV(){
+		String[][] arr = new String[10][10];
+		for (i = 0; i < addressBook.size(); i++) {
+			for (j = 0; i < 8; j++) {
+				arr[i][j] = addressBook.get(i)[j];
+	      }
+		}
+		return arr;
+	}	
+
 
 }
