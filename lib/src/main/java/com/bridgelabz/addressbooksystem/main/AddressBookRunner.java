@@ -55,8 +55,8 @@ public class AddressBookRunner {
 			}
 		}
 		addressBookOne.showDetails();
-		addressBookOne.writeDataToCSV();
-		addressBookOne.readDataToCSV("data.csv");
+		addressBookOne.writeDataToJson();
+		addressBookOne.readDataToCSVToJson("data.json");
 	}
 
 }
