@@ -103,10 +103,33 @@ public class AddressBook {
 		}
 	}
 
-	public void readDataToCSV(String fileName) throws IOException {
+	public void readDataToCSVToJson(String fileName) throws IOException {
 		try {
 			Files.lines(new File(fileName).toPath()).forEach(System.out::println);
 		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void writeDataToJson() throws IOException {
+		try {
+			FileWriter file = new FileWriter("data.json");
+			JsonWriter jsonFile = new JsonWriter(file);
+			for (i = 0; i < addressBook.size(); i++) {
+				jsonFile.beginObject();
+				jsonFile.name("Index no").value(i + 1);
+				jsonFile.name("First name").value(addressBook.get(i)[0]);
+				jsonFile.name("Last name").value(addressBook.get(i)[1]);
+				jsonFile.name("Address").value(addressBook.get(i)[2]);
+				jsonFile.name("City").value(addressBook.get(i)[3]);
+				jsonFile.name("State").value(addressBook.get(i)[4]);
+				jsonFile.name("Zip code").value(addressBook.get(i)[5]);
+				jsonFile.name("Contact number").value(addressBook.get(i)[6]);
+				jsonFile.name("Email-Id").value(addressBook.get(i)[7]);
+				jsonFile.endObject();
+			}
+			System.out.println("Json file is created");
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
