@@ -12,37 +12,19 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Scanner;
 
+import com.opencsv.exceptions.CsvDataTypeMismatchException;
+import com.opencsv.exceptions.CsvRequiredFieldEmptyException;
+
 public class AddressBookRunner {
 
-	public static void readDataCSV() throws IOException {
-		try {
-			Files.lines(new File("data.csv").toPath()).forEach(System.out::println);
-		} catch (FileNotFoundException x) {
-			x.printStackTrace();
-		}
-	}
-
-	public static void writeDataToCSV() throws IOException {
-		try {
-			ArrayList<String[]> data = new ArrayList<String[]>();
-			data.add(new String[] { "Index no", "First Name", "Last Name", "Address", "City", "State", "Zip Code",
-					"Contact Number", "Email-Id" });
-			Enumeration<String> en = dict.keys();
-			while (en.hasMoreElements()) {
-				String x = en.nextElement();
-				AddressBook temp = dict.get();
-			}
-		} catch (IOException x) {
-			x.printStackTrace();
-		}
-	}
-
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, CsvDataTypeMismatchException, CsvRequiredFieldEmptyException {
 
 		System.out.println(" Welcome to Address Book Program ");
 		AddressBook addressBookOne = new AddressBook();
 		Scanner sc = new Scanner(System.in);
 		while (true) {
+			System.out.println("Enter index number :- ");
+			String indexNo = sc.nextLine();
 			System.out.println("Enter your first name :- ");
 			String firstName = sc.nextLine();
 			System.out.println("Enter your last name :- ");
@@ -59,7 +41,7 @@ public class AddressBookRunner {
 			String contactNumber = sc.nextLine();
 			System.out.println("Enter your email :- ");
 			String email = sc.nextLine();
-			boolean result = addressBookOne.addContactDetails(firstName, lastName, address, city, state, zip,
+			boolean result = addressBookOne.addContactDetails(indexNo, firstName, lastName, address, city, state, zip,
 					contactNumber, email);
 			if (result == true) {
 				System.out.println("Contact details added successfully");
@@ -73,14 +55,8 @@ public class AddressBookRunner {
 			}
 		}
 		addressBookOne.showDetails();
-		addressBookOne.dictOfStateAndPersons();
-		addressBookOne.dictOfCityAndPersons();
-		addressBookOne.printDictCityAndPersons();
-		addressBookOne.printDictStateAndPersons();
-		int result = addressBookOne.countPersons();
-		System.out.println("The total number of people is " + result);
-		AddressBookRunner.readDataCSV();
-
+		addressBookOne.writeDataToCSV();
+		addressBookOne.readDataToCSV("data.csv");
 	}
 
 }
